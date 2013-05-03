@@ -25,6 +25,7 @@
     "grunt-concurrent": "~0.1.0",
     "matchdep": "~0.1.1",
     "grunt-ember-templates": "~0.4.4",
+    "grunt-contrib-less": "~0.5.1",
     "grunt-git": "git://github.com/kingbin/grunt-git.git"
   },
   "engines": {

@@ -23,8 +23,12 @@ body {
     line-height: 1.4;
 }
 
-html, body {
+html, body, #main {
     margin: 20px;
+}
+
+#main {
+  padding-top: 20px;
 }
 
 /*

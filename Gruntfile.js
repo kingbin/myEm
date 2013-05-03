@@ -28,6 +28,10 @@ module.exports = function (grunt) {
               files: '<%= yeoman.app %>/templates/**/*.hbs',
               tasks: ['ember_templates', 'livereload']
             },
+            ember_models: {
+              files: '<%= yeoman.app %>/models/**/*.js',
+              tasks: ['uglify', 'livereload']
+            },
             coffee: {
                 files: ['<%= yeoman.app %>/js/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
@@ -36,10 +40,10 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
-            compass: {
-                files: ['<%= yeoman.app %>/css/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server']
-            },
+            //compass: {
+            //    files: ['<%= yeoman.app %>/css/{,*/}*.{scss,sass}'],
+            //    tasks: ['compass:server']
+            //},
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -144,23 +148,36 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        compass: {
-            options: {
-                sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/css/fonts',
-                importPath: 'app/components',
-                relativeAssets: true
-            },
-            dist: {},
-            server: {
-                options: {
-                    debugInfo: true
-                }
+        less: {
+           production: {
+              options: {
+                yuicompress: true
+              },
+              files: { "<%= yeoman.app %>/css/bootstrap.css" : ['<%= yeoman.app %>/components/bootstrap/less/bootstrap.less','<%= yeoman.app %>/components/bootstrap/less/responsive.less'] }
             }
         },
+        //compass: {
+        //    options: {
+        //        sassDir: '<%= yeoman.app %>/styles',
+        //        cssDir: '.tmp/styles',
+        //        imagesDir: '<%= yeoman.app %>/images',
+        //        javascriptsDir: '<%= yeoman.app %>/scripts',
+        //        fontsDir: '<%= yeoman.app %>/css/fonts',
+        //        importPath: 'app/components',
+        //        relativeAssets: true
+        //    },
+        //    dist: {
+        //        files: {
+        //            '.tmp/js/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+        //        }
+        //    }
+        //    server: {
+        //        options: {
+        //            debugInfo: true
+        //        }
+        //    }
+        //},
+
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -169,9 +186,16 @@ module.exports = function (grunt) {
         // not enabled since usemin task does concat and uglify
         // check index.html to edit your build targets
         // enable this task if you prefer defining your build targets here
-        /*uglify: {
-            dist: {}
-        },*/
+        uglify: {
+           options: {
+              mangle: false //{ except: ['jQuery', 'Backbone'] }
+            },
+            my_target: {
+              files: {
+                '<%= yeoman.app %>/js/compiled-models.min.js': ['<%= yeoman.app %>/models/{,*/}*.js']
+              }
+            }
+          },
         rev: {
             dist: {
                 files: {
@@ -269,16 +293,20 @@ module.exports = function (grunt) {
             server: [
                 'ember_templates',
                 'coffee:dist',
-                'compass:server'
+                'uglify',
+                //'compass:server'
             ],
             test: [
                 'coffee',
-                'compass'
+                'uglify',
+                //'compass'
             ],
             dist: [
                 'ember_templates',
+                'coffee:dist',
                 'coffee',
-                'compass:dist',
+                'ugilfy',
+                //'compass:dist',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -296,8 +324,7 @@ module.exports = function (grunt) {
                     '.tmp/js/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
                 }
             }
-        }
-
+        },
     });
 
     grunt.renameTask('regarde', 'watch');
@@ -328,9 +355,10 @@ module.exports = function (grunt) {
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
+        'less',
         'cssmin',
         'concat',
-        'uglify',
+        'uglify:my_target',
         'copy',
         'rev',
         'usemin'

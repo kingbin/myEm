@@ -4,7 +4,10 @@
   "dependencies": {
     "jquery": "~1.9.1",
     "handlebars": "~1.0.0-rc.3",
-    "ember": "~1.0.0-rc.2",
+    "ember": "latest",
+    "ember-data": "latest",
+    "showdown": "~0.3.1",
+    "moment": "~2.0.0",
     "modernizr": "~2.6.1",
     "jquery-retina-display": "git://github.com/kingbin/jquery-retina-display.git#v0.1.2"
   },
