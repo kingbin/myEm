@@ -3,8 +3,14 @@
 (function (window) {
   var App = window.App = Ember.Application.create();
 
-  App.Router.map(function () {
-    // put your routes here
+  App.Store = DS.Store.extend ({
+    revision: 12,
+    adapter: 'DS.FixtureAdapter'
+  })
+
+  App.Router.map(function() {
+      this.route('about');
+      this.route('agents');
   });
 
   App.IndexRoute = Ember.Route.extend({

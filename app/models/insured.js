@@ -1,9 +1,11 @@
 App.Insured  = DS.Model.extend({
+  id:           DS.attr('number'),
   firstName:    DS.attr('string'),
   lastName:     DS.attr('string'),
   email:        DS.attr('string'),
   notes:        DS.attr('string'),
-  phoneNumbers: DS.hasMany('App.PhoneNumber'),
+  dob:          DS.attr('date'),
+//  phoneNumbers: DS.hasMany('App.PhoneNumber'),
 
   fullName: function() {
     var firstName = this.get('firstName'),
@@ -29,3 +31,18 @@ App.Insured  = DS.Model.extend({
     return 'http://www.gravatar.com/avatar/' + MD5(email);
   }.property('email')
 });
+
+
+App.Insured.FIXTURES = [{
+  id: 1,
+  firstName: "Chris",
+  lastName: "Blazek",
+  email: "chris.blazek@gmail.com",
+  notes: "coder",
+  dob: new Date('3-14-1976')
+}]
+
+
+
+
+

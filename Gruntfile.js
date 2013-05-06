@@ -32,6 +32,10 @@ module.exports = function (grunt) {
               files: '<%= yeoman.app %>/models/**/*.js',
               tasks: ['uglify', 'livereload']
             },
+            ember_routes: {
+              files: '<%= yeoman.app %>/routes/**/*.js',
+              tasks: ['uglify', 'livereload']
+            },
             coffee: {
                 files: ['<%= yeoman.app %>/js/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
@@ -191,9 +195,11 @@ module.exports = function (grunt) {
               mangle: false //{ except: ['jQuery', 'Backbone'] }
             },
             my_target: {
-              files: {
-                '<%= yeoman.app %>/js/compiled-models.min.js': ['<%= yeoman.app %>/models/{,*/}*.js']
-              }
+              files: [{
+                '<%= yeoman.app %>/js/compiled-models.min.js': ['<%= yeoman.app %>/models/{,*/}*.js'],
+                //'<%= yeoman.app %>/js/compiled-templates.min.js': ['<%= yeoman.app %>/templates/{,*/}*.js'], //using ember-templates
+                '<%= yeoman.app %>/js/compiled-routes.min.js': ['<%= yeoman.app %>/routes/{,*/}*.js']
+              }]
             }
           },
         rev: {
@@ -358,7 +364,7 @@ module.exports = function (grunt) {
         'less',
         'cssmin',
         'concat',
-        'uglify:my_target',
+        'uglify',
         'copy',
         'rev',
         'usemin'
