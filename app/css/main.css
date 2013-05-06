@@ -305,4 +305,19 @@ textarea {
     h3 {
         page-break-after: avoid;
     }
+
+
+
 }
+
+
+.whitelabel{
+  border-radius:12px;
+  border: black solid 1px;
+  color:black;
+  width:200px;
+  margin-top:5px;
+  box-shadow: 2px 2px black;
+}
+
+

@@ -1,7 +1,11 @@
 /*global Ember */
 
 (function (window) {
-  var App = window.App = Ember.Application.create();
+  var App = window.App = Ember.Application.create({
+    LOG_TRANSITIONS: true,
+  });
+
+  debug = Em.debug;
 
   App.Store = DS.Store.extend ({
     revision: 12,
@@ -11,6 +15,8 @@
   App.Router.map(function() {
       this.route('about');
       this.route('agents');
+      this.route('insureds');
+      this.route('tweets');
   });
 
   App.IndexRoute = Ember.Route.extend({
@@ -18,4 +24,8 @@
       return ['gold lion', 'unicorn', 'narwhal'];
     }
   });
+
+App = Em.Application.extend({rootElement: 'tweets'});
+
+
 })(this);

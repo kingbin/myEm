@@ -4,7 +4,7 @@
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header">All Insureds</li>
-      {{#each insureds in controller}}
+      {{#each insured in model}}
         {{view App.InsuredInListView contentBinding="insured"}}
       {{/each}}
     </ul>
