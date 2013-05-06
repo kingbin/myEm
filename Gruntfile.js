@@ -28,12 +28,20 @@ module.exports = function (grunt) {
               files: '<%= yeoman.app %>/templates/**/*.hbs',
               tasks: ['ember_templates', 'livereload']
             },
+            ember_routes: {
+              files: '<%= yeoman.app %>/routes/**/*.js',
+              tasks: ['uglify', 'livereload']
+            },
             ember_models: {
               files: '<%= yeoman.app %>/models/**/*.js',
               tasks: ['uglify', 'livereload']
             },
-            ember_routes: {
-              files: '<%= yeoman.app %>/routes/**/*.js',
+            ember_views: {
+              files: '<%= yeoman.app %>/views/**/*.js',
+              tasks: ['uglify', 'livereload']
+            },
+            ember_controllers: {
+              files: '<%= yeoman.app %>/controllers/**/*.js',
               tasks: ['uglify', 'livereload']
             },
             coffee: {
@@ -196,9 +204,11 @@ module.exports = function (grunt) {
             },
             my_target: {
               files: [{
-                '<%= yeoman.app %>/js/compiled-models.min.js': ['<%= yeoman.app %>/models/{,*/}*.js'],
                 //'<%= yeoman.app %>/js/compiled-templates.min.js': ['<%= yeoman.app %>/templates/{,*/}*.js'], //using ember-templates
-                '<%= yeoman.app %>/js/compiled-routes.min.js': ['<%= yeoman.app %>/routes/{,*/}*.js']
+                '<%= yeoman.app %>/js/compiled-routes.min.js': ['<%= yeoman.app %>/routes/{,*/}*.js'],
+                '<%= yeoman.app %>/js/compiled-models.min.js': ['<%= yeoman.app %>/models/{,*/}*.js'],
+                '<%= yeoman.app %>/js/compiled-views.min.js': ['<%= yeoman.app %>/views/{,*/}*.js'],
+                '<%= yeoman.app %>/js/compiled-controllers.min.js': ['<%= yeoman.app %>/controllers/{,*/}*.js'],
               }]
             }
           },
