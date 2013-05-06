@@ -321,7 +321,7 @@ module.exports = function (grunt) {
                 'ember_templates',
                 'coffee:dist',
                 'coffee',
-                'ugilfy',
+                'uglify',
                 //'compass:dist',
                 'imagemin',
                 'svgmin',
