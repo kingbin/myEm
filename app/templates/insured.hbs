@@ -1,8 +1,19 @@
 
-<h5 class="muted">{{fullName}}</h5>
-First Name: {{firstName}}<br/>
-Last Name: {{lastName}}<br/>
-DOB: {{prettydob}}<br/>
+<div class="page-header">
+  <h2 ><img {{bindAttr src="gravatar"}} />   {{fullName}}   <small>born on date: {{prettyDate dob}}</small></h2>
+  <hr>
+  <div class="below-the-fold">
+    First Name: {{firstName}}<br/>
+    Last Name: {{lastName}}<br/>
+    Age: {{fromToday dob}}<br/>
+    email: {{email}}<br/>
 
+    notes: {{md notes}}<br/>
 
-
+    {{#if isEditing}}
+      <button {{action 'doneEditing'}}>done</button>
+    {{else}}
+      <button {{action 'edit'}}>edit</button>
+    {{/if}}
+  </div>
+</div>

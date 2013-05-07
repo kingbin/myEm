@@ -43,7 +43,7 @@ App.Insured.FIXTURES = [{
   firstName: "Chris",
   lastName: "Blazek",
   email: "chris.blazek@gmail.com",
-  notes: "coder",
+  notes: "coder [github repo](https://github.com/kingbin \"github account\")",
   dob: new Date('3-14-1976')},
   {
     id: 2,
@@ -55,6 +55,15 @@ App.Insured.FIXTURES = [{
   }]
 
 
+Ember.Handlebars.registerBoundHelper('prettyDate', function(date) {
+  return moment(date).format('MMMM Do YYYY');
+});
+Ember.Handlebars.registerBoundHelper('fromToday', function(date) {
+  return moment(date).fromNow();
+});
 
-
+var showdown = new Showdown.converter();
+Ember.Handlebars.registerBoundHelper('md', function(input) {
+  return new Ember.Handlebars.SafeString(showdown.makeHtml(input));
+});
 

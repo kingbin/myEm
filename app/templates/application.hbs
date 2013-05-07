@@ -5,9 +5,17 @@
       <div class="container-fluid">
         <div class="brand">Insured</div>
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li>{{#linkTo "insureds"}}insured{{/linkTo}}</li>
-          <li>{{#linkTo "about"}}about{{/linkTo}}</li>
+          {{#linkTo "index" tagName="li"}}
+              <a {{bindAttr href="view.href"}}>index</a>
+          {{/linkTo}}
+
+          {{#linkTo "insureds" tagName="li"}}
+              <a {{bindAttr href="view.href"}}>insureds</a>
+          {{/linkTo}}
+
+          {{#linkTo "about" tagName="li"}}
+              <a {{bindAttr href="view.href"}}>about</a>
+          {{/linkTo}}
         </ul>
         <div class="btn-group pull-right">
           <a href="" class="btn"><i class="icon-plus-sign"></i> Add Policy</a>
