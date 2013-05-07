@@ -4,13 +4,14 @@
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header">All Insureds</li>
-      {{#each insured in model}}
-        {{view App.InsuredInListView contentBinding="insured"}}
+      {{#each model}}
+        {{!view App.InsuredInListView contentBinding="insured"}}
+        <li>{{fullName}}</li>
       {{/each}}
     </ul>
   </div>
 </div>
 <div class="span9">
-  {{outlet}}
+  {{outlet insured}}
 </div>
 

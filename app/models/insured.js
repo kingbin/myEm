@@ -1,5 +1,5 @@
 App.Insured  = DS.Model.extend({
-  id:           DS.attr('number'),
+//  id:           DS.attr('number'),
   firstName:    DS.attr('string'),
   lastName:     DS.attr('string'),
   email:        DS.attr('string'),
@@ -39,8 +39,15 @@ App.Insured.FIXTURES = [{
   lastName: "Blazek",
   email: "chris.blazek@gmail.com",
   notes: "coder",
-  dob: new Date('3-14-1976')
-}]
+  dob: new Date('3-14-1976')},
+  {
+    id: 2,
+    firstName: "James",
+    lastName: "Felt",
+    email: "james.felt@@gmail.com",
+    notes: "coder",
+    dob: new Date('1-1-1976')
+  }]
 
 
 

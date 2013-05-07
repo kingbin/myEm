@@ -1,7 +1,7 @@
 
-App.InsuredRoute = Ember.Route.extend({
+App.InsuredsRoute = Ember.Route.extend({
   model: function() {
-    return App.Insured;
+    return App.Insured.find();
   }
 
 });
