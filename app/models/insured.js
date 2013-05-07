@@ -29,7 +29,12 @@ App.Insured  = DS.Model.extend({
     var email = this.get('email');
     if (!email) email = '';
     return 'http://www.gravatar.com/avatar/' + MD5(email);
-  }.property('email')
+  }.property('email'),
+
+  prettydob: function() {
+      var d = this.get('dob');
+      return moment(d).format('MMMM Do YYYY');
+  }.property('dob')
 });
 
 
@@ -43,8 +48,8 @@ App.Insured.FIXTURES = [{
   {
     id: 2,
     firstName: "James",
-    lastName: "Felt",
-    email: "james.felt@@gmail.com",
+    lastName: "Felts",
+    email: "james.felt@gmail.com",
     notes: "coder",
     dob: new Date('1-1-1976')
   }]

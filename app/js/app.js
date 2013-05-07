@@ -13,10 +13,12 @@
   })
 
   App.Router.map(function() {
-      this.route('about');
-      this.route('agents');
-      this.route('insureds');
-      this.route('tweets');
+      this.resource('about');
+      this.resource('agents');
+      this.resource('insureds', function(){
+        this.resource('insured', { path: ':insured_id'})
+      });
+      this.resource('tweets');
   });
 
   App.IndexRoute = Ember.Route.extend({
