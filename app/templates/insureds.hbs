@@ -6,7 +6,6 @@
         <ul class="nav nav-list">
           <li class="nav-header">All Insureds</li>
           {{#each model}}
-            {{!viewInsuredFools App.InsuredInListView contentBinding="insured"}}
             <li>{{#linkTo 'insured' this }} {{fullName}} {{/linkTo}} </li>
           {{/each}}
         </ul>

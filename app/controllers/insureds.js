@@ -3,6 +3,6 @@ App.InsuredsController = Em.ArrayController.extend({
   activeInsuredId: null,
 });
 
-//App.InsuredController.set('content', Insureds);
+//App.InsuredController.set('content', App.Insured.find());
 // Em.ArrayController.extend
 

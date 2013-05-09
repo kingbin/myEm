@@ -1,6 +1,6 @@
 App.InsuredsRoute = Ember.Route.extend({
-  model: function() {
-    return App.Insured.find();
-  }
-
+  model: function(params) {
+    //console.log(JSON.stringify(params, null, 4));
+    return App.Insured.find(params.insured_id);
+  },
 });

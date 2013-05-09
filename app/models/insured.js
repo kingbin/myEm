@@ -55,15 +55,4 @@ App.Insured.FIXTURES = [{
   }]
 
 
-Ember.Handlebars.registerBoundHelper('prettyDate', function(date) {
-  return moment(date).format('MMMM Do YYYY');
-});
-Ember.Handlebars.registerBoundHelper('fromToday', function(date) {
-  return moment(date).fromNow();
-});
-
-var showdown = new Showdown.converter();
-Ember.Handlebars.registerBoundHelper('md', function(input) {
-  return new Ember.Handlebars.SafeString(showdown.makeHtml(input));
-});
 

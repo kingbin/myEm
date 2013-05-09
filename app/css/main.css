@@ -320,4 +320,9 @@ textarea {
   box-shadow: 2px 2px black;
 }
 
-
+textarea[class*='ember-text-area']{
+  width: 100%;
+}
+/*textarea#ember396.ember-view.ember-text-area{
+  width: 100%;
+}*/

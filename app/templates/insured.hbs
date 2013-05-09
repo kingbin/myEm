@@ -5,12 +5,14 @@
   <div class="below-the-fold">
     First Name: {{firstName}}<br/>
     Last Name: {{lastName}}<br/>
+    DOB: {{prettyDate dob}}<br/>
     Age: {{fromToday dob}}<br/>
     email: {{email}}<br/>
 
     notes: {{md notes}}<br/>
 
     {{#if isEditing}}
+      {{partial 'insured/edit'}}
       <button {{action 'doneEditing'}}>done</button>
     {{else}}
       <button {{action 'edit'}}>edit</button>
